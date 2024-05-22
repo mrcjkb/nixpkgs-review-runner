@@ -1,12 +1,14 @@
 ---
 name: "nixpkgs-review"
 on:
-  workflow_call:
+  workflow_dispatch:
     inputs:
       pr:
+        description: "The PR number to run the review for"
         required: true
         type: number
       post-result:
+        description: "Whether to post the result"
         required: false
         type: boolean
         default: true
