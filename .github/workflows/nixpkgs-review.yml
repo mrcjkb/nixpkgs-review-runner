@@ -24,4 +24,4 @@ jobs:
     - name: Install nix
       uses: DeterminateSystems/nix-installer-action@v10
     - name: Run nixpkgs-review and post result
-      run: nix run .#nixpkgs-review pr --post-result ${{ inputs.pr }} --token ${{ secrets.TOKEN }}
+      run: nix run .#nixpkgs-review -- pr --post-result ${{ inputs.pr }} --token ${{ secrets.TOKEN }}
