@@ -7,11 +7,6 @@ on:
         description: "The PR number to run the review for"
         required: true
         type: number
-      post-result:
-        description: "Whether to post the result"
-        required: false
-        type: boolean
-        default: true
 jobs:
   nixpkgs-review:
     runs-on: ${{ matrix.os.host }}
@@ -30,7 +25,3 @@ jobs:
       uses: DeterminateSystems/nix-installer-action@v10
     - name: Run nixpkgs-review and post result
       run: nix run .#nixpkgs-review pr --post-result ${{ inputs.pr }} --token ${{ secrets.TOKEN }}
-      if: ${{ inputs.post-result == 'true' }}
-    - name: Run nixpkgs-review
-      run: nix run .#nixpkgs-review pr ${{ inputs.pr }}
-      if: ${{ inputs.post-result == 'false' }}
